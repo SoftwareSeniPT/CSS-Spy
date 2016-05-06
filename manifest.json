@@ -4,7 +4,7 @@
     "name": "CSS Spy",
     "short_name": "css-spy",
     "description": "Showing CSS attribute on element hover",
-    "version": "1.3",
+    "version": "1.4",
     "author": "Rudi Wahyudi",
     "icons": {
         "16": "icon16.png",
