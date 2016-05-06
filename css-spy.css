@@ -1,0 +1,278 @@
+.is_hovered {
+    border: 1px solid red !important;
+}
+
+.css-spy-result {
+    text-align: left;
+}
+
+.css-spy-value {
+    padding: 3px 0;
+    padding-left: 30px;
+}
+
+.css-spy-content {
+    padding: 0 29px;
+    font-size: 15px;
+}
+
+.css-spy-content * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.css-spy-compare .css-spy-meta {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.css-spy-compare .css-spy-meta:last-of-type {
+    display: none;
+}
+
+.css-spy-compare .css-spy-meta span {
+    display: none;
+}
+
+.css-spy-compare-element:first-child .css-spy-meta:before {
+    content: "Compared";
+    font-weight: 600;
+}
+
+.css-spy-settings {
+    text-align: left;
+}
+
+.css-spy-settings-label {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.css-spy-compare-element:last-child .css-spy-meta:before {
+    content: "Current Element";
+    font-weight: 600;
+}
+
+.css-spy-meta {
+    color: #434343;
+    margin-bottom: 5px;
+}
+
+.css-spy-color {
+    width: 10px;
+    border-radius: 50%;
+    height: 10px;
+    display: inline-block;
+}
+
+.css-spy-tabs {
+    padding: 0 29px;
+    margin-bottom: 10px;
+}
+
+
+
+.css-spy-tabs:before,
+.css-spy-tabs:after {
+    display: table;
+    content: "";
+    line-height: 0;
+}
+
+.css-spy-tabs:after {
+    clear: both;
+}
+
+.css-spy-tab {
+    float: left;
+    width: 33.3%;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    padding: 8px 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-left: -1px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.css-spy-content > div {
+    min-height: 230px;
+    max-height: 270px;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+.css-spy-tab.active {
+    border-bottom: 0;
+    border-top: 4px solid #8cd4f5;
+    margin-top: -3px;
+    font-weight: 400;
+}
+
+.css-spy-tab:first-child {
+    margin-left: 0;
+}
+
+.css-spy-value:nth-of-type(even) {
+    background: #F8F8F8;
+}
+
+.css-spy-compare-inner {
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.css-spy-compare-element {
+    float: left;
+    width: 50%;
+    padding-right: 10px;
+}
+
+.css-spy-compare-element:last-child {
+  padding-right: 0;
+  padding-left: 10px;
+}
+
+.css-spy-compare-element .css-spy-result {
+    padding: 0;
+}
+
+.css-spy-prop {
+    font-weight: 400;
+    color: #618DA1;
+}
+
+.css-spy-settings-lists > div {
+    padding: 7px;
+    overflow: hidden;
+}
+
+.css-spy-settings-lists > div:nth-of-type(even) {
+    background-color: #f8f8f8;
+}
+
+.css-spy-switch-button {
+    float: right;
+}
+
+
+/* Switch button */
+
+.css-spy-onoffswitch {
+    position: relative;
+    width: 40px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.css-spy-settings-lists > div > label {
+    display: inline-block;
+}
+
+.css-spy-compared-reset {
+    text-align: right;
+    padding: 10px 0;
+    padding-top: 0;
+}
+
+.css-spy-compared-reset > span {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    color: #27789D;
+}
+
+.css-spy-settings-lists label {
+    cursor: pointer;
+    font-weight: 300;
+}
+
+.css-spy-compare .css-spy-same {
+    background: #CAE7F4;
+    border-bottom: 1px solid #BAD5E1;
+}
+
+.css-spy-compare .css-spy-same:last-child {
+    border: 0;
+}
+
+.css-spy-onoffswitch-checkbox {
+    display: none;
+}
+
+.css-spy-onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #EEEEEE;
+    border-radius: 50px;
+}
+
+.css-spy-onoffswitch-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+
+.css-spy-onoffswitch-inner:before,
+.css-spy-onoffswitch-inner:after {
+    display: block;
+    float: left;
+    width: 50%;
+    height: 21px;
+    padding: 0;
+    line-height: 67px;
+    font-size: 14px;
+    color: white;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.css-spy-onoffswitch-inner:before {
+    content: "";
+    padding-left: 10px;
+    background-color: #EEEEEE;
+    color: #FFFFFF;
+}
+
+.css-spy-onoffswitch-inner:after {
+    content: "";
+    padding-right: 10px;
+    background-color: #EEEEEE;
+    color: #999999;
+    text-align: right;
+}
+
+.css-spy-onoffswitch-switch {
+    display: block;
+    height: 22px;
+    width: 22px;
+    right: 13px;
+    margin: 1.5px;
+    background: #4D4D4D;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border: 2px solid #EEEEEE;
+    border-radius: 50px;
+    transition: all 0.3s ease-in 0s;
+}
+
+.css-spy-onoffswitch-checkbox:checked + .css-spy-onoffswitch-label .css-spy-onoffswitch-inner {
+    margin-left: 0;
+}
+
+.css-spy-onoffswitch-checkbox:checked + .css-spy-onoffswitch-label .css-spy-onoffswitch-switch {
+    right: 0px;
+    background-color: #27A1CA;
+}

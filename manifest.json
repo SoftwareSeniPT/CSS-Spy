@@ -1,0 +1,41 @@
+{
+    "manifest_version": 2,
+
+    "name": "CSS Spy",
+    "short_name": "css-spy",
+    "description": "Showing CSS attribute on element hover",
+    "version": "1.3",
+    "author": "Rudi Wahyudi",
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+
+    "offline_enabled": false,
+
+    "browser_action": {
+        "default_icon": "icon48.png"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": [
+            "jquery-2.2.3.min.js", 
+            "jquery.dom-outline-1.0.js", 
+            "selectorator.min.js", 
+            "css-spy.js",
+            "sweetalert.min.js"
+        ],
+        "css": [
+            "css-spy.css",
+            "sweetalert.css"
+        ]
+    }],
+    "permissions": [
+        "storage",
+        "tabs"
+    ]
+}
