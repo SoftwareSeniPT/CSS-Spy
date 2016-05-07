@@ -73,34 +73,70 @@ var cssValueSetting = {
     textShadow: false,
     whiteSpace: false,
     wordSpacing: false,
-}
+};
 
 function onStart() {
     // Set the default css value to show
-    chrome.storage.sync.set({ cssValue: cssValueSetting });
+    chrome.storage.sync.set({
+        cssValue: cssValueSetting
+    });
     // Set default urls database
-    chrome.storage.sync.set({ urls: {} });
+    chrome.storage.sync.set({
+        urls: {}
+    });
     // Set comparedCSS
-    chrome.storage.sync.set({ comparedCSS: {} });
+    chrome.storage.sync.set({
+        comparedCSS: {}
+    });
 }
 
 onStart();
 chrome.windows.onCreated.addListener(function() {
     onStart();
-})
+});
 
-function isActive(state, currentURL) {
+// Change icon on browser action
+function changeIcon(state) {
+    if (state) {
+        chrome.browserAction.setIcon({
+            path: "../images/icon48-red.png"
+        });
+    } else {
+        chrome.browserAction.setIcon({
+            path: "../images/icon48.png"
+        });
+    }
+}
+
+function isActive(state, currentURL, saveToStorage) {
+    if (!saveToStorage) {
+        changeIcon(state);
+        return;
+    }
     chrome.storage.sync.get('urls', function(data) {
         var urls = data.urls;
-        urls[currentURL] = state;
-        chrome.storage.sync.set({ urls: urls }, function() {
-            if (state) {
-                chrome.browserAction.setIcon({ path: "icon48-red.png" });
-            } else {
-                chrome.browserAction.setIcon({ path: "icon48.png" });
+        if (state) {
+          // Save in active
+          urls[currentURL] = state;
+        } else {
+          // Delete if inactive
+          delete urls[currentURL];
+        }
+        chrome.storage.sync.set({
+            urls: urls
+        }, function() {
+            // Catch for error and reset if have one
+            if (chrome.extension.lastError) {
+                onStart();
+                console.log("error!");
+                return;
             }
+            changeIcon(state);
             // Send message to content script
-            chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+            chrome.tabs.query({
+                active: true,
+                currentWindow: true
+            }, function(tabs) {
                 if (tabs[0].url !== currentURL) {
                     return;
                 }
@@ -123,13 +159,13 @@ function tabOnChange() {
             var state = data.urls[tab.url];
             if (state === undefined) {
                 // set default state for page
-                isActive(false, tab.url);
+                isActive(false, tab.url, false);
             } else {
                 if (state) {
                     // If active
-                    isActive(true, tab.url);
+                    isActive(true, tab.url, false);
                 } else {
-                    isActive(false, tab.url);
+                    isActive(false, tab.url, false);
                 }
             }
         });
@@ -168,13 +204,13 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
             if (state === undefined) {
                 // set default state for page
-                isActive(false, tab.url);
+                isActive(true, tab.url, true);
             } else {
                 if (state) {
                     // If active
-                    isActive(false, tab.url);
+                    isActive(false, tab.url, true);
                 } else {
-                    isActive(true, tab.url);
+                    isActive(true, tab.url, true);
                 }
             }
         });

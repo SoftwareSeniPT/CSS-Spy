@@ -1,7 +1,7 @@
 // Convert RBG to Hex
 function rgbToHex(a) {
     a = a.replace(/[^\d,]/g, "").split(",");
-    return "#" + ((1 << 24) + (+a[0] << 16) + (+a[1] << 8) + +a[2]).toString(16).slice(1)
+    return "#" + ((1 << 24) + (+a[0] << 16) + (+a[1] << 8) + +a[2]).toString(16).slice(1);
 }
 
 function camelToDash(s) {
@@ -10,8 +10,8 @@ function camelToDash(s) {
 
 function dashToCamel(s) {
     return s.replace(/[-_]([a-z])/g, function(g) {
-        return g[1].toUpperCase(); })
-};
+        return g[1].toUpperCase(); });
+}
 
 function getCSS(css, comparedCSS, settings, element, showCompared) {
     if (showCompared) {
@@ -19,7 +19,7 @@ function getCSS(css, comparedCSS, settings, element, showCompared) {
         css2 = css;
     } else {
         css1 = css;
-        css2 = comparedCSS;        
+        css2 = comparedCSS;
     }
 
     var style = [];
@@ -39,7 +39,7 @@ function getCSS(css, comparedCSS, settings, element, showCompared) {
                 if (value === "rgba(0, 0, 0, 0)") {
                     return;
                 }
-                var html = "<div class='css-spy-value " + additionalClass + "'>" +
+                html = "<div class='css-spy-value " + additionalClass + "'>" +
                     "<span class='css-spy-prop'>" + prop +
                     "</span>: " + rgbToHex(value) + "; " +
                     "<span class='css-spy-color' style='background-color: " + value + "'>" +
@@ -52,7 +52,7 @@ function getCSS(css, comparedCSS, settings, element, showCompared) {
                 }
             }
 
-            if (prop === "border" && css1["border"] === "") {
+            if (prop === "border" && css1.border === "") {
                 return;
             }
 
@@ -94,7 +94,7 @@ var onClickProcess = function(element, settings, comparedCSS) {
 
     if (Object.keys(comparedCSS).length === 0) {
         compareHTML  = "<div class='css-spy-compare-inner css-spy-compare-empty'>Nothing to compare here.</div>";
-    }   
+    }
 
     // Process css value to show on setting tab
     var switchButton = function(prop, checked) {
@@ -105,7 +105,7 @@ var onClickProcess = function(element, settings, comparedCSS) {
             "<span class=\"css-spy-onoffswitch-switch\"></span>" +
             "</label>" +
             "</div>";
-    }
+    };
 
     var settingHTMLArray = [];
     $.each(settings, function(prop, value) {
@@ -116,14 +116,14 @@ var onClickProcess = function(element, settings, comparedCSS) {
 
     var settingHTML = "<div class='css-spy-settings-content'>" +
         "<div class='css-spy-settings-label'>Choose CSS Properties to inspect:</div>" +
-        "<div class='css-spy-settings-lists'>" + settingHTMLArray.join("\r\n"); + "</div>" +
+        "<div class='css-spy-settings-lists'>" + settingHTMLArray.join("\r\n") + "</div>" +
     "</div>";
 
     var finalHTML = tabs + "<div class='css-spy-content'>" +
         "<div class='css-spy-element'>" + getCSS(css, comparedCSS, settings, element, false) + "</div>" +
         "<div class='css-spy-compare' style='display:none'>" + compareHTML + "</div>" +
         "<div class='css-spy-settings' style='display:none'>" + settingHTML + "</div>" +
-        "</div>"
+        "</div>";
 
     swal({
         title: "CSS Extracted!",
@@ -139,7 +139,7 @@ var onClickProcess = function(element, settings, comparedCSS) {
             swal("Good job!", "Successfully copied as comparison!", "success");
         });
     });
-}
+};
 
 var onClick = function(element) {
     chrome.storage.sync.get(['cssValue', 'comparedCSS'], function(data) {
@@ -147,7 +147,7 @@ var onClick = function(element) {
         var comparedCSS = data.comparedCSS;
         onClickProcess(element, cssValue, comparedCSS);
     });
-}
+};
 
 var myDomOutline = DomOutline({
     onClick: onClick,
